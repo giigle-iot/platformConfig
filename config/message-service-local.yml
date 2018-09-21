@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: message-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/gigiot-message?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&allowMultiQueries=true
+    username: root
+    password:
+    max-active: 100
+    driver-class-name: com.mysql.jdbc.Driver
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 18000000
+    max-wait: 60000
+    test-while-idle: true
+    validation-query: select 1
+  redis:
+    database: 1
+    host: 119.3.24.105
+    port: 6379
+    password: 123456
+    pool:
+      max-idle: 10
+      min-idle: 5
+      max-active: 100
+      max-wait: -1
+    timeout: 5000
+  http:
+    multipart:
+      maxFileSize: 100Mb
+      maxRequestSize: 1000Mb
+
+server:
+  context-path: /message
+  port: 4000
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params:
+    count: countSql
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.giigle.iot.message.domain
+
+sms:
+  accessKeyId: LTAIq4mhaAdxsgfk
+  accessKeySecret: jZe7bjLnHWKWx0N2MEjyn8dSFTchZU

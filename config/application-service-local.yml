@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: application-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/gigiot-application
+    username: root
+    password:
+    max-active: 100
+    driver-class-name: com.mysql.jdbc.Driver
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 18000000
+    max-wait: 60000
+    test-while-idle: true
+    validation-query: select 1
+  redis:
+    database: 1
+    host: 119.3.24.105
+    port: 6379
+    password: 123456
+    pool:
+      max-idle: 10
+      min-idle: 5
+      max-active: 100
+      max-wait: -1
+    timeout: 5000
+
+server:
+  context-path: /application
+  port: 1000
+
+mybatis:
+  type-aliases-package: com.giigle.application.domain
+  mapper-locations: classpath:mapper/*.xml
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params:
+      count: countSql
+
+logging:
+  level:
+    com:
+      giigle:
+        application:
+          mapper: DEBUG
