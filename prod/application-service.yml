@@ -1,0 +1,25 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      show-sql: true
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/gigiot-application
+    username: root
+    password:
+    max-active: 100
+    driver-class-name: com.mysql.jdbc.Driver
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 18000000
+    max-wait: 60000
+    test-while-idle: true
+    validation-query: select 1
+
+server:
+  context-path: /application
+  port: 1000
+
+aaa:
+  bbb: cc

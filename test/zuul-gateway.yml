@@ -1,0 +1,61 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+
+    saas-server:
+        path: /saas/**
+        serviceId: saas-server
+        stripPrefix: false
+        sensitiveHeaders:
+
+    client-user-service:
+        path: /clientUser/**
+        serviceId: client-user-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    application-service:
+        path: /application/**
+        serviceId: application-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    infrared-service:
+        path: /infrared/**
+        serviceId: infrared-service
+        stripPrefix: false
+        sensitiveHeaders:
+server:
+  port: 9999
+
+interface:
+  timeout: 72000
+
+spring:
+  redis:
+    database: 1
+    host: 119.3.24.105
+    port: 6379
+    password: 123456
+    pool:
+      max-idle: 10
+      min-idle: 5
+      max-active: 100
+      max-wait: -1
+    timeout: 5000
